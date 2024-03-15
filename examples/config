@@ -1,0 +1,13 @@
+
+export FFPLAY_GLOBAL_OPTS="-hide_banner -an"
+export FFMPEG_GLOBAL_OPTS="-hide_banner"
+
+export INPUT_FILE="${ROOT_DIR}/media/caminandes-3-llamigos.mp4"
+
+export MULTICAST_HOST="224.0.0.255"
+export MULTICAST_PORT="1234"
+
+export UNICAST_HOST="127.0.0.1"
+export UNICAST_PORT="1234"
+
+set -x

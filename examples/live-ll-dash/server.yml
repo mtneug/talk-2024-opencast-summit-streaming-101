@@ -1,0 +1,33 @@
+apiVersion: ingest.nagare.media/v1alpha1
+kind: Config
+
+servers:
+  - name: default
+    address: :8080
+    http: {}
+    apps:
+      - name: dash_serve
+        http:
+          host: "**"
+          path: /dash
+          cors:
+            allowOrigins: "*"
+            allowMethods: GET,HEAD,OPTIONS
+            allowHeaders: "*"
+            maxAge: 86400
+        genericServe:
+          appRef:
+            name: dash
+          volumeRefs:
+            - name: myMem
+      - name: dash
+        http:
+          host: "**"
+          path: /dash
+        dashAndHlsIngest:
+          volumeRef:
+            name: myMem
+
+volumes:
+  - name: myMem
+    mem: {}
